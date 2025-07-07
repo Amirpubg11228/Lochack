@@ -1,15 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="fa">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>تولدت مبارک پرنسس 🎉</title>
-  <!-- فونت و کتابخانه Animate.css -->
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet" />
+  <!-- کتابخانه انیمیشن -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
     body {
       margin: 0;
       padding: 0;
@@ -40,7 +40,7 @@
       text-align: center;
       position: relative;
       z-index: 2;
-      animation: fadeInDown 2s;
+      animation: fadeInDown 1.5s ease;
     }
 
     h1 {
@@ -78,6 +78,7 @@
       font-weight: bold;
       box-shadow: 0 0 10px rgba(246, 133, 174, 0.3);
       outline: none;
+      animation: fadeIn 1s ease;
     }
 
     input[type="number"]:focus {
@@ -97,6 +98,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 6px 18px rgba(214, 51, 108, 0.6);
+      animation: fadeInUp 1.2s ease;
     }
 
     button:hover {
@@ -109,6 +111,7 @@
       font-weight: bold;
       min-height: 30px;
       color: #d6336c;
+      animation: fadeIn 1s ease;
     }
 
     /* بادکنک‌ها */
@@ -138,17 +141,19 @@
       animation-delay: 0s;
       background: #ff6b81;
     }
+
     .balloon:nth-child(2) {
-      left: auto;
       right: 10px;
       animation-delay: 2s;
       background: #feca57;
     }
+
     .balloon:nth-child(3) {
       left: 20px;
       animation-delay: 4s;
       background: #48dbfb;
     }
+
     .balloon:nth-child(4) {
       right: 20px;
       animation-delay: 6s;
@@ -164,42 +169,41 @@
 </head>
 <body>
 
-<!-- بادکنک‌ها -->
-<div class="balloon animate__animated animate__fadeInDown"></div>
-<div class="balloon animate__animated animate__fadeInDown"></div>
-<div class="balloon animate__animated animate__fadeInDown"></div>
-<div class="balloon animate__animated animate__fadeInDown"></div>
+  <!-- بادکنک‌ها -->
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
 
-<div class="container animate__animated animate__zoomIn">
-  <h1>پرنسس خانومم ما چند ماهه داریم روز و شبامونو باهم می‌گذرانیم ؟</h1>
-  <input type="number" id="answer" placeholder="جواب رو وارد کن" />
-  <button onclick="checkAnswer()">ارسال جواب</button>
-  <div class="result" id="result"></div>
-</div>
+  <div class="container animate__animated animate__fadeInDown">
+    <h1>پرنسس خانومم ما چند ماهه داریم روز و شبامونو باهم می‌گذرانیم؟</h1>
+    <input type="number" id="answer" placeholder="جواب رو وارد کن" />
+    <button onclick="checkAnswer()">ارسال جواب</button>
+    <div class="result" id="result"></div>
+  </div>
 
-<script>
-function checkAnswer() {
-    const userAnswer = document.getElementById('answer').value.trim();
-    const resultDiv = document.getElementById('result');
-    resultDiv.classList.remove('animate__animated', 'animate__shakeX', 'animate__bounceIn');
-    
-    if (userAnswer === "") {
+  <script>
+    function checkAnswer() {
+      const userAnswer = document.getElementById('answer').value.trim();
+      const resultDiv = document.getElementById('result');
+
+      if (userAnswer === "") {
         resultDiv.textContent = "لطفاً جواب رو وارد کن عشقم 🥺";
         resultDiv.style.color = "#b02e5a";
-        resultDiv.classList.add('animate__animated', 'animate__shakeX');
         return;
-    }
+      }
 
-    if (userAnswer === "7") {
-        resultDiv.textContent = " آفرین عشق دلم! جواب درسته حالا بالای سرتو نگاه کن🎉❤️";
+      if (userAnswer === "7") {
+        resultDiv.textContent = "آفرین عشق دلم! جواب درسته حالا بالای سرتو نگاه کن 🎉❤️";
         resultDiv.style.color = "#27ae60";
-        resultDiv.classList.add('animate__animated', 'animate__bounceIn');
-    } else {
+        resultDiv.classList.add("animate__animated", "animate__tada");
+      } else {
         resultDiv.textContent = "نه نازنینم، یه بار دیگه امتحان کن 😘";
         resultDiv.style.color = "#d6336c";
-        resultDiv.classList.add('animate__animated', 'animate__shakeX');
+        resultDiv.classList.add("animate__animated", "animate__shakeX");
+      }
     }
-}
-</script>
+  </script>
 </body>
 </html>
+
