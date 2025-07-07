@@ -1,11 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="fa">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>تولدت مبارک پرنسس 🎉</title>
-  <!-- کتابخانه انیمیشن -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
@@ -29,7 +28,7 @@
     }
 
     .container {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.95);
       border-radius: 30px;
       padding: 50px 35px;
       box-shadow: 0 10px 40px rgba(246, 133, 174, 0.5);
@@ -40,7 +39,18 @@
       text-align: center;
       position: relative;
       z-index: 2;
-      animation: fadeInDown 1.5s ease;
+      animation: fadeDown 1.5s ease;
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
@@ -78,7 +88,7 @@
       font-weight: bold;
       box-shadow: 0 0 10px rgba(246, 133, 174, 0.3);
       outline: none;
-      animation: fadeIn 1s ease;
+      transition: all 0.3s;
     }
 
     input[type="number"]:focus {
@@ -98,7 +108,6 @@
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 6px 18px rgba(214, 51, 108, 0.6);
-      animation: fadeInUp 1.2s ease;
     }
 
     button:hover {
@@ -111,7 +120,18 @@
       font-weight: bold;
       min-height: 30px;
       color: #d6336c;
-      animation: fadeIn 1s ease;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     /* بادکنک‌ها */
@@ -165,6 +185,27 @@
       30% { opacity: 1; }
       100% { top: -60px; opacity: 0; }
     }
+
+    .shake {
+      animation: shake 0.4s ease;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    .bounce {
+      animation: bounce 1s ease;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
   </style>
 </head>
 <body>
@@ -175,7 +216,7 @@
   <div class="balloon"></div>
   <div class="balloon"></div>
 
-  <div class="container animate__animated animate__fadeInDown">
+  <div class="container">
     <h1>پرنسس خانومم ما چند ماهه داریم روز و شبامونو باهم می‌گذرانیم؟</h1>
     <input type="number" id="answer" placeholder="جواب رو وارد کن" />
     <button onclick="checkAnswer()">ارسال جواب</button>
@@ -186,21 +227,23 @@
     function checkAnswer() {
       const userAnswer = document.getElementById('answer').value.trim();
       const resultDiv = document.getElementById('result');
+      resultDiv.className = 'result'; // حذف کلاس‌های قبلی
 
       if (userAnswer === "") {
         resultDiv.textContent = "لطفاً جواب رو وارد کن عشقم 🥺";
         resultDiv.style.color = "#b02e5a";
+        resultDiv.classList.add("shake");
         return;
       }
 
       if (userAnswer === "7") {
         resultDiv.textContent = "آفرین عشق دلم! جواب درسته حالا بالای سرتو نگاه کن 🎉❤️";
         resultDiv.style.color = "#27ae60";
-        resultDiv.classList.add("animate__animated", "animate__tada");
+        resultDiv.classList.add("bounce");
       } else {
         resultDiv.textContent = "نه نازنینم، یه بار دیگه امتحان کن 😘";
         resultDiv.style.color = "#d6336c";
-        resultDiv.classList.add("animate__animated", "animate__shakeX");
+        resultDiv.classList.add("shake");
       }
     }
   </script>
