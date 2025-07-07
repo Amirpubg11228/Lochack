@@ -4,25 +4,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title> تولدت مبارک پرنسس خانوم 🎉</title>
-  
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <title>تولدت مبارک پرنسس 🎉</title>
+  <!-- فونت و کتابخانه Animate.css -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Vazirmatn', sans-serif;
+      background: linear-gradient(270deg, #f8a5c2, #ffd6e8);
+      background-size: 800% 800%;
+      animation: gradientBG 15s ease infinite;
+      height: 100vh;
+      overflow: hidden;
+      direction: rtl;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(255,255,255,0.9);
+      border-radius: 30px;
+      padding: 50px 35px;
+      box-shadow: 0 10px 40px rgba(246, 133, 174, 0.5);
+      width: 90%;
+      max-width: 420px;
+      margin: 0 auto;
+      margin-top: 80px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      animation: fadeInDown 2s;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 30px;
+      color: #d6336c;
+      text-shadow: 1px 1px 4px #ffc0cb;
+      position: relative;
+      padding-right: 35px;
+    }
+
+    h1::before {
+      content: "🎂";
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 2.2rem;
+      animation: pop 1.6s infinite;
+    }
+
+    @keyframes pop {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 16px;
+      font-size: 1.5rem;
+      border: 3px solid #f48fb1;
+      border-radius: 20px;
+      background: #fff0f6;
+      text-align: center;
+      color: #a72f5f;
+      font-weight: bold;
+      box-shadow: 0 0 10px rgba(246, 133, 174, 0.3);
+      outline: none;
+    }
+
+    input[type="number"]:focus {
+      border-color: #d6336c;
+      box-shadow: 0 0 20px #d6336c;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 14px 40px;
+      background: linear-gradient(45deg, #d6336c, #b02e5a);
+      color: white;
+      font-size: 1.4rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 18px rgba(214, 51, 108, 0.6);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .result {
+      margin-top: 25px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      min-height: 30px;
+      color: #d6336c;
+    }
+
+    /* بادکنک‌ها */
+    .balloon {
+      position: absolute;
+      width: 40px;
+      height: 55px;
+      background: #86ff6b;
+      border-radius: 50% 50% 45% 45%;
+      animation: float 6s infinite ease-in-out;
+      z-index: 1;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: #333;
+      transform: translateX(-50%);
+    }
+
+    .balloon:nth-child(1) {
+      left: 10px;
+      animation-delay: 0s;
+      background: #ff6b81;
+    }
+    .balloon:nth-child(2) {
+      left: auto;
+      right: 10px;
+      animation-delay: 2s;
+      background: #feca57;
+    }
+    .balloon:nth-child(3) {
+      left: 20px;
+      animation-delay: 4s;
+      background: #48dbfb;
+    }
+    .balloon:nth-child(4) {
+      right: 20px;
+      animation-delay: 6s;
+      background: #1dd1a1;
+    }
+
+    @keyframes float {
+      0% { top: 100vh; opacity: 0; }
+      30% { opacity: 1; }
+      100% { top: -60px; opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-  <div class="balloon"></div>
-  <div class="balloon"></div>
-  <div class="balloon"></div>
-  <div class="balloon"></div>
 
-  <div class="container animate__animated animate__zoomIn">
-    <h1 class="animate__animated animate__heartBeat animate__delay-1s">پرنسس خانومم ما چند ماهه داریم روز و شبامونو باهم می‌گذرانیم ؟</h1>
-    <input type="number" id="answer" placeholder="جواب رو وارد کن" />
-    <button onclick="checkAnswer()">ارسال جواب</button>
-    <div class="result" id="result"></div>
-  </div>
+<!-- بادکنک‌ها -->
+<div class="balloon animate__animated animate__fadeInDown"></div>
+<div class="balloon animate__animated animate__fadeInDown"></div>
+<div class="balloon animate__animated animate__fadeInDown"></div>
+<div class="balloon animate__animated animate__fadeInDown"></div>
 
-  <script src="script.js"></script>
+<div class="container animate__animated animate__zoomIn">
+  <h1>پرنسس خانومم ما چند ماهه داریم روز و شبامونو باهم می‌گذرانیم ؟</h1>
+  <input type="number" id="answer" placeholder="جواب رو وارد کن" />
+  <button onclick="checkAnswer()">ارسال جواب</button>
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+function checkAnswer() {
+    const userAnswer = document.getElementById('answer').value.trim();
+    const resultDiv = document.getElementById('result');
+    resultDiv.classList.remove('animate__animated', 'animate__shakeX', 'animate__bounceIn');
+    
+    if (userAnswer === "") {
+        resultDiv.textContent = "لطفاً جواب رو وارد کن عشقم 🥺";
+        resultDiv.style.color = "#b02e5a";
+        resultDiv.classList.add('animate__animated', 'animate__shakeX');
+        return;
+    }
+
+    if (userAnswer === "7") {
+        resultDiv.textContent = " آفرین عشق دلم! جواب درسته حالا بالای سرتو نگاه کن🎉❤️";
+        resultDiv.style.color = "#27ae60";
+        resultDiv.classList.add('animate__animated', 'animate__bounceIn');
+    } else {
+        resultDiv.textContent = "نه نازنینم، یه بار دیگه امتحان کن 😘";
+        resultDiv.style.color = "#d6336c";
+        resultDiv.classList.add('animate__animated', 'animate__shakeX');
+    }
+}
+</script>
 </body>
 </html>
-
